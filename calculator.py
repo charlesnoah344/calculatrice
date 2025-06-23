@@ -16,6 +16,7 @@ def afficher(text,position,taille):
     clock = pygame.time.Clock()
     return (text_surface, text_rect)
 
+
 class App:
   def __init__(self):
     pygame.init()
@@ -116,15 +117,44 @@ class App:
     )
 
     self.number=''
-    
-    '''self.display = UILabel(
-      relative_rect=pygame.Rect(350, 50, 150, 50),
-      text='',
-      manager=self.manager)'''
-      #c'est ce que j'affiche
+    self.display_label=afficher(f'{self.number}',(350, 50),40)#c'est ce que j'affiche
+    self.screen.blit(self.display_label[0], self.display_label[1])
 
-    self.display_label=afficher(f'{self.number}',(350, 50),40)
-    self.screen.blit(self.display_label[0], self.display_label[1])    
+  def calcul(self):
+            '''Cette fonction effectue des calculs simple en fonction de l'opérateur '''
+            L=['+','-','*','/' ]
+            for i in range(4):
+               if L[i] in self.number:#si l'opération à faire est dans est dans notre chaine de caractère
+                  
+                  if i==0:#addition
+                    for j in range(len(self.number)):
+                        if L[i]==self.number[j]:
+                           m1=float(self.number[:j])+float(self.number[j+1:len(self.number)-1])
+                    self.number+=str(m1)
+                    
+                  if i==1:#soustraction
+                     for j in range(len(self.number)):
+                        if L[i]==self.number[j]:
+                           m1=float(self.number[:j])-float(self.number[j+1:len(self.number)-1])
+                     self.number+=str(m1)
+
+                  if i==2:#multiplication
+                     for j in range(len(self.number)):
+                        if L[i]==self.number[j]:
+                           m1=float(self.number[:j])*float(self.number[j+1:len(self.number)-1])
+                     self.number+=str(m1)
+
+                  if i==3:#division
+                     for j in range(len(self.number)):
+                        if L[i]==self.number[j]:
+                           if self.number[j+1:len(self.number)-1]=='0':#si le terme du dénominateur est nulle
+                              self.number='impossible'
+                            
+                           else:            
+                            m1=float(self.number[:j])/float(self.number[j+1:len(self.number)-1])
+                            self.number+=str(m1)
+
+            return self.number    
 
 
   def process_events(self, event: pygame.event.Event):
@@ -248,39 +278,7 @@ class App:
             self.number+=name
             self.display_label=afficher(f'{self.number}',(350, 50),20)
             self.screen.blit(self.display_label[0], self.display_label[1])
-
-            L=['+','-','*','/' ]
-            for i in range(4):
-               if L[i] in self.number:#si l'opération à faire est dans est dans notre chaine de caractère
-                  
-                  if i==0:#addition
-                    for j in range(len(self.number)):
-                        if L[i]==self.number[j]:
-                           m1=float(self.number[:j])+float(self.number[j+1:len(self.number)-1])
-                    self.number+=str(m1)
-                    
-                  if i==1:#soustraction
-                     for j in range(len(self.number)):
-                        if L[i]==self.number[j]:
-                           m1=float(self.number[:j])-float(self.number[j+1:len(self.number)-1])
-                     self.number+=str(m1)
-
-                  if i==2:#multiplication
-                     for j in range(len(self.number)):
-                        if L[i]==self.number[j]:
-                           m1=float(self.number[:j])*float(self.number[j+1:len(self.number)-1])
-                     self.number+=str(m1)
-
-                  if i==3:#division
-                     for j in range(len(self.number)):
-                        if L[i]==self.number[j]:
-                           if self.number[j+1:len(self.number)-1]=='0':
-                              self.number='impossible'
-                            
-                           else:            
-                            m1=float(self.number[:j])/float(self.number[j+1:len(self.number)-1])
-                            self.number+=str(m1)
-
+            self.number=self.calcul()
             self.display_label=afficher(f'{self.number}',(350, 50),40)
             self.screen.blit(self.display_label[0], self.display_label[1])#affichage
                                       
