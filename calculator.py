@@ -129,30 +129,30 @@ class App:
                   if i==0:#addition
                     for j in range(len(self.number)):
                         if L[i]==self.number[j]:
-                           m1=float(self.number[:j])+float(self.number[j+1:len(self.number)-1])
-                    self.number+=str(m1)
+                           m1=float(self.number[:j])+float(self.number[j+1:len(self.number)])
+                    self.number=str(m1)
                     
                   if i==1:#soustraction
                      for j in range(len(self.number)):
                         if L[i]==self.number[j]:
-                           m1=float(self.number[:j])-float(self.number[j+1:len(self.number)-1])
-                     self.number+=str(m1)
+                           m1=float(self.number[:j])-float(self.number[j+1:len(self.number)])
+                     self.number=str(m1)
 
                   if i==2:#multiplication
                      for j in range(len(self.number)):
                         if L[i]==self.number[j]:
-                           m1=float(self.number[:j])*float(self.number[j+1:len(self.number)-1])
-                     self.number+=str(m1)
+                           m1=float(self.number[:j])*float(self.number[j+1:len(self.number)])
+                     self.number=str(m1)
 
                   if i==3:#division
                      for j in range(len(self.number)):
                         if L[i]==self.number[j]:
-                           if self.number[j+1:len(self.number)-1]=='0':#si le terme du dénominateur est nulle
+                           if self.number[j+1:len(self.number)]=='0':#si le terme du dénominateur est nulle
                               self.number='impossible'
                             
                            else:            
-                            m1=float(self.number[:j])/float(self.number[j+1:len(self.number)-1])
-                            self.number+=str(m1)
+                            m1=float(self.number[:j])/float(self.number[j+1:len(self.number)])
+                            self.number=str(m1)
 
             return self.number    
 
@@ -274,10 +274,7 @@ class App:
             self.screen.blit(self.display_label[0], self.display_label[1])
 
         if event.ui_element is self.egal_button:
-            name = self.egal_button.text
-            self.number+=name
-            self.display_label=afficher(f'{self.number}',(350, 50),20)
-            self.screen.blit(self.display_label[0], self.display_label[1])
+            
             self.number=self.calcul()
             self.display_label=afficher(f'{self.number}',(350, 50),40)
             self.screen.blit(self.display_label[0], self.display_label[1])#affichage
