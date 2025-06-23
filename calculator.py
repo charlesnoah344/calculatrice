@@ -116,6 +116,16 @@ class App:
        text='erase all',
        manager=self.manager
     )
+    self.open_parenthesis_button=UIButton(
+       relative_rect=pygame.Rect(625, 115+170, 150, 50),
+       text='(',
+       manager=self.manager
+    )
+    self.close_parenthesis_button=UIButton(
+       relative_rect=pygame.Rect(625, 170+170, 150, 50),
+       text=')',
+       manager=self.manager
+    )
 
     self.number=''
     self.display_label=afficher(f'{self.number}',(350, 50),40)#c'est ce que j'affiche
@@ -252,6 +262,20 @@ class App:
             self.number=self.calcul()
             self.display_label=afficher(f'{self.number}',(350, 50),40)
             self.screen.blit(self.display_label[0], self.display_label[1])#affichage
+        
+        if event.ui_element is self.open_parenthesis_button:
+            name = self.open_parenthesis_button.text
+            self.number+=name
+            self.display_label=afficher(f'{self.number}',(350, 50),40)
+            self.screen.blit(self.display_label[0], self.display_label[1])
+
+        if event.ui_element is self.close_parenthesis_button:
+            name = self.close_parenthesis_button.text
+            self.number+=name
+            self.display_label=afficher(f'{self.number}',(350, 50),40)
+            self.screen.blit(self.display_label[0], self.display_label[1])
+
+        
                                       
 
   def run(self):
