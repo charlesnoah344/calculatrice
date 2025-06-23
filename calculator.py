@@ -21,7 +21,7 @@ def afficher(text,position,taille):
 class App:
   def __init__(self):
     pygame.init()
-    self.size = (800, 400)
+    self.size = (780, 400)
     self.screen = pygame.display.set_mode(self.size)
     self.manager = pygame_gui.UIManager(self.size)
   
@@ -128,10 +128,16 @@ class App:
     )
     self.pattern=r'\d+\.?\d*|[+\-*/]'
 
+
     self.number=''
-    self.display_label=afficher(f'{self.number}',(350, 50),40)#c'est ce que j'affiche
+    self.display_position=(400,120)
+    self.display_label=afficher(f'{self.number}',self.display_position,40)#c'est ce que j'affiche
     self.screen.blit(self.display_label[0], self.display_label[1])
 
+    self.welcome_label=afficher('Lesno calculator',(400,50),40)#c'est ce que j'affiche
+    self.screen.blit(self.welcome_label[0], self.welcome_label[1])
+
+    
   def calcul(self):
     """Cette fonction effectue les opérations."""
     try:
@@ -149,61 +155,61 @@ class App:
         if event.ui_element is self.one_button:
             name = self.one_button.text
             self.number+=name
-            self.display_label=afficher(f'{self.number}',(350, 50),40)
+            self.display_label=afficher(f'{self.number}',self.display_position,40)
             self.screen.blit(self.display_label[0], self.display_label[1])
 
         if event.ui_element is self.two_button:
             name = self.two_button.text
             self.number+=name
-            self.display_label=afficher(f'{self.number}',(350, 50),40)
+            self.display_label=afficher(f'{self.number}',self.display_position,40)
             self.screen.blit(self.display_label[0], self.display_label[1])
 
         if event.ui_element is self.three_button:
             name = self.three_button.text
             self.number+=name
-            self.display_label=afficher(f'{self.number}',(350, 50),40)
+            self.display_label=afficher(f'{self.number}',self.display_position,40)
             self.screen.blit(self.display_label[0], self.display_label[1])
 
         if event.ui_element is self.four_button:
             name = self.four_button.text
             self.number+=name
-            self.display_label=afficher(f'{self.number}',(350, 50),40)
+            self.display_label=afficher(f'{self.number}',self.display_position,40)
             self.screen.blit(self.display_label[0], self.display_label[1])
 
         if event.ui_element is self.five_button:
             name = self.five_button.text
             self.number+=name
-            self.display_label=afficher(f'{self.number}',(350, 50),40)
+            self.display_label=afficher(f'{self.number}',self.display_position,40)
             self.screen.blit(self.display_label[0], self.display_label[1])
 
         if event.ui_element is self.six_button:
             name = self.six_button.text
             self.number+=name
-            self.display_label=afficher(f'{self.number}',(350, 50),40)
+            self.display_label=afficher(f'{self.number}',self.display_position,40)
             self.screen.blit(self.display_label[0], self.display_label[1])
 
         if event.ui_element is self.seven_button:
             name = self.seven_button.text
             self.number+=name
-            self.display_label=afficher(f'{self.number}',(350, 50),40)
+            self.display_label=afficher(f'{self.number}',self.display_position,40)
             self.screen.blit(self.display_label[0], self.display_label[1])
 
         if event.ui_element is self.eight_button:
             name = self.eight_button.text
             self.number+=name
-            self.display_label=afficher(f'{self.number}',(350, 50),40)
+            self.display_label=afficher(f'{self.number}',self.display_position,40)
             self.screen.blit(self.display_label[0], self.display_label[1])
 
         if event.ui_element is self.nine_button:
             name = self.nine_button.text
             self.number+=name
-            self.display_label=afficher(f'{self.number}',(350, 50),40)
+            self.display_label=afficher(f'{self.number}',self.display_position,40)
             self.screen.blit(self.display_label[0], self.display_label[1])
 
         if event.ui_element is self.zero_button:
             name = self.zero_button.text
             self.number+=name
-            self.display_label=afficher(f'{self.number}',(350, 50),40)
+            self.display_label=afficher(f'{self.number}',self.display_position,40)
             self.screen.blit(self.display_label[0], self.display_label[1])
 
         if event.ui_element is self.point_button:
@@ -215,28 +221,28 @@ class App:
                      else:
                         name = self.point_button.text
                         self.number+=name
-                        self.display_label=afficher(f'{self.number}',(350, 50),40)
+                        self.display_label=afficher(f'{self.number}',self.display_position,40)
                         self.screen.blit(self.display_label[0], self.display_label[1])   
 
             else:
                name = self.point_button.text
                self.number+=name
-               self.display_label=afficher(f'{self.number}',(350, 50),40)
+               self.display_label=afficher(f'{self.number}',self.display_position,40)
                self.screen.blit(self.display_label[0], self.display_label[1])
 
         if event.ui_element is self.erase_button:
            if p.match(self.number) is not None: #si il s'agit d'une séquence d'operation
               self.number=self.number[:-1]#on retire le dernier caractère
-              self.display_label=afficher(f'{self.number}',(350, 50),40)
+              self.display_label=afficher(f'{self.number}',self.display_position,40)
               self.screen.blit(self.display_label[0], self.display_label[1])
            else: #sinon on supprime tout
               self.number=''
-              self.display_label=afficher(f'{self.number}',(350, 50),40)
+              self.display_label=afficher(f'{self.number}',self.display_position,40)
               self.screen.blit(self.display_label[0], self.display_label[1])
           
         if event.ui_element is self.erase_all_button:
            self.number=''
-           self.display_label=afficher(f'{self.number}',(350, 50),40)
+           self.display_label=afficher(f'{self.number}',self.display_position,40)
            self.screen.blit(self.display_label[0], self.display_label[1])
         
            
@@ -244,24 +250,24 @@ class App:
             if p.match(self.number) is not None: #si il s'agit d'une séquence d'operation
               name = self.plus_button.text
               self.number+=name
-              self.display_label=afficher(f'{self.number}',(350, 50),40)
+              self.display_label=afficher(f'{self.number}',self.display_position,40)
               self.screen.blit(self.display_label[0], self.display_label[1])
             else:#sinon on supprime tout
               name = self.plus_button.text
               self.number=name
-              self.display_label=afficher(f'{self.number}',(350, 50),40)
+              self.display_label=afficher(f'{self.number}',self.display_position,40)
               self.screen.blit(self.display_label[0], self.display_label[1])
 
         if event.ui_element is self.minus_button:
             if p.match(self.number) is not None: #si il s'agit d'une séquence d'operation
               name = self.minus_button.text
               self.number+=name
-              self.display_label=afficher(f'{self.number}',(350, 50),40)
+              self.display_label=afficher(f'{self.number}',self.display_position,40)
               self.screen.blit(self.display_label[0], self.display_label[1])
             else:#sinon on supprime tout
               name = self.minus_button.text
               self.number=name
-              self.display_label=afficher(f'{self.number}',(350, 50),40)
+              self.display_label=afficher(f'{self.number}',self.display_position,40)
               self.screen.blit(self.display_label[0], self.display_label[1])
 
 
@@ -269,12 +275,12 @@ class App:
             if p.match(self.number) is not None: #si il s'agit d'une séquence d'operation
               name = self.multi_button.text
               self.number+=name
-              self.display_label=afficher(f'{self.number}',(350, 50),40)
+              self.display_label=afficher(f'{self.number}',self.display_position,40)
               self.screen.blit(self.display_label[0], self.display_label[1])
             else:#sinon on supprime tout
               name = self.multi_button.text
               self.number=name
-              self.display_label=afficher(f'{self.number}',(350, 50),40)
+              self.display_label=afficher(f'{self.number}',self.display_position,40)
               self.screen.blit(self.display_label[0], self.display_label[1])
 
 
@@ -282,30 +288,30 @@ class App:
             if p.match(self.number) is not None: #si il s'agit d'une séquence d'operation
               name = self.divide_button.text
               self.number+=name
-              self.display_label=afficher(f'{self.number}',(350, 50),40)
+              self.display_label=afficher(f'{self.number}',self.display_position,40)
               self.screen.blit(self.display_label[0], self.display_label[1])
             else:#sinon on supprime tout
               name = self.divide_button.text
               self.number=name
-              self.display_label=afficher(f'{self.number}',(350, 50),40)
+              self.display_label=afficher(f'{self.number}',self.display_position,40)
               self.screen.blit(self.display_label[0], self.display_label[1])
 
         if event.ui_element is self.egal_button:
             
             self.number=self.calcul()
-            self.display_label=afficher(f'{self.number}',(350, 50),40)
+            self.display_label=afficher(f'{self.number}',self.display_position,40)
             self.screen.blit(self.display_label[0], self.display_label[1])#affichage
         
         if event.ui_element is self.open_parenthesis_button:
             name = self.open_parenthesis_button.text
             self.number+=name
-            self.display_label=afficher(f'{self.number}',(350, 50),40)
+            self.display_label=afficher(f'{self.number}',self.display_position,40)
             self.screen.blit(self.display_label[0], self.display_label[1])
 
         if event.ui_element is self.close_parenthesis_button:
             name = self.close_parenthesis_button.text
             self.number+=name
-            self.display_label=afficher(f'{self.number}',(350, 50),40)
+            self.display_label=afficher(f'{self.number}',self.display_position,40)
             self.screen.blit(self.display_label[0], self.display_label[1])
                                     
 
@@ -325,11 +331,13 @@ class App:
       
       self.manager.update(time_delta/1000)
 
-      pygame.draw.rect(self.screen, (0, 0, 0), pygame.Rect(0, 0, 800, 600))
+      pygame.draw.rect(self.screen, (0, 0, 0), pygame.Rect(0, 0, 780, 400))
      
       self.manager.draw_ui(self.screen)
 
       self.screen.blit(self.display_label[0], self.display_label[1])
+
+      self.screen.blit(self.welcome_label[0], self.welcome_label[1])
 
       pygame.display.flip()
 
