@@ -123,8 +123,12 @@ class App:
 
   def calcul(self):
     """Cette fonction effectue les opérations."""
-    
-    return str(eval(self.number))
+    try:
+      return str(eval(self.number))
+    except SyntaxError:
+       return 'SYNTAX ERROR'
+    except ZeroDivisionError:
+       return "MATH ERROR"
 
   def process_events(self, event: pygame.event.Event):
     '''cette fonction gère les différents évènements'''
