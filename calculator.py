@@ -2,6 +2,7 @@ import pygame
 import pygame_gui
 from pygame_gui.elements import UIButton, UITextEntryLine, UILabel
 import sys
+import re
 
 def afficher(text,position,taille):
     """cette fonction affiche à l'ecran un texte. 
@@ -121,43 +122,12 @@ class App:
     self.screen.blit(self.display_label[0], self.display_label[1])
 
   def calcul(self):
-            '''Cette fonction effectue des calculs simple en fonction de l'opérateur '''
-            L=['+','-','*','/' ]
-            for i in range(4):
-               if L[i] in self.number:#si l'opération à faire est dans est dans notre chaine de caractère
-                  
-                  if i==0:#addition
-                    for j in range(len(self.number)):
-                        if L[i]==self.number[j]:
-                           m1=float(self.number[:j])+float(self.number[j+1:len(self.number)])
-                    self.number=str(m1)
-                    
-                  if i==1:#soustraction
-                     for j in range(len(self.number)):
-                        if L[i]==self.number[j]:
-                           m1=float(self.number[:j])-float(self.number[j+1:len(self.number)])
-                     self.number=str(m1)
-
-                  if i==2:#multiplication
-                     for j in range(len(self.number)):
-                        if L[i]==self.number[j]:
-                           m1=float(self.number[:j])*float(self.number[j+1:len(self.number)])
-                     self.number=str(m1)
-
-                  if i==3:#division
-                     for j in range(len(self.number)):
-                        if L[i]==self.number[j]:
-                           if self.number[j+1:len(self.number)]=='0':#si le terme du dénominateur est nulle
-                              self.number='impossible'
-                            
-                           else:            
-                            m1=float(self.number[:j])/float(self.number[j+1:len(self.number)])
-                            self.number=str(m1)
-
-            return self.number    
-
+    """Cette fonction effectue les opérations."""
+    
+    return str(eval(self.number))
 
   def process_events(self, event: pygame.event.Event):
+    '''cette fonction gère les différents évènements'''
     
     if event.type == pygame_gui.UI_BUTTON_PRESSED:
         if event.ui_element is self.one_button:
@@ -281,6 +251,9 @@ class App:
                                       
 
   def run(self):
+
+    'cette fonction fait fonctionner le tout'
+
     clock = pygame.time.Clock()
     while True:
       time_delta = clock.tick(60)
