@@ -96,6 +96,11 @@ class App:
       text='=',
       manager=self.manager
     )
+    self.erase_all_button= UIButton(
+       relative_rect=pygame.Rect(625, 60+170, 150, 50),
+       text='erase all',
+       manager=self.manager
+    )
     
     self.display = UILabel(
       relative_rect=pygame.Rect(350, 50, 150, 50),
@@ -111,42 +116,52 @@ class App:
             name = self.one_button.text
             self.number+=name
             self.display.set_text(f'{self.number}')
+
         if event.ui_element is self.two_button:
             name = self.two_button.text
             self.number+=name
             self.display.set_text(f'{self.number}')
+
         if event.ui_element is self.three_button:
             name = self.three_button.text
             self.number+=name
             self.display.set_text(f'{self.number}')
+
         if event.ui_element is self.four_button:
             name = self.four_button.text
             self.number+=name
             self.display.set_text(f'{self.number}')
+
         if event.ui_element is self.five_button:
             name = self.five_button.text
             self.number+=name
             self.display.set_text(f'{self.number}')
+
         if event.ui_element is self.six_button:
             name = self.six_button.text
             self.number+=name
             self.display.set_text(f'{self.number}')
+
         if event.ui_element is self.seven_button:
             name = self.seven_button.text
             self.number+=name
             self.display.set_text(f'{self.number}')
+
         if event.ui_element is self.eight_button:
             name = self.eight_button.text
             self.number+=name
             self.display.set_text(f'{self.number}')
+
         if event.ui_element is self.nine_button:
             name = self.nine_button.text
             self.number+=name
             self.display.set_text(f'{self.number}')
+
         if event.ui_element is self.zero_button:
             name = self.zero_button.text
             self.number+=name
             self.display.set_text(f'{self.number}')
+
         if event.ui_element is self.point_button:
             if '.' in self.number:
                for k in range(len(self.number)):
@@ -156,58 +171,68 @@ class App:
                      else:
                         name = self.point_button.text
                         self.number+=name
-                        self.display.set_text(f'{self.number}')
-                   
+                        self.display.set_text(f'{self.number}')          
             else:
                name = self.point_button.text
                self.number+=name
                self.display.set_text(f'{self.number}')
                
         if event.ui_element is self.erase_button:
-           self.number=self.number[:-1]
+           self.number=self.number[:-1]#on retire le dernier caractère
            self.display.set_text(f'{self.number}')
+          
+        if event.ui_element is self.erase_all_button:
+           self.number=''
+           self.display.set_text(f'{self.number}')
+
+
         if event.ui_element is self.plus_button:
             name = self.plus_button.text
             self.number+=name
-            self.display.set_text(f'{self.number}')
+            self.display.set_text(f'{self.number}') 
+
         if event.ui_element is self.minus_button:
             name = self.minus_button.text
             self.number+=name
             self.display.set_text(f'{self.number}')
+
         if event.ui_element is self.multi_button:
             name = self.multi_button.text
             self.number+=name
             self.display.set_text(f'{self.number}')
+
         if event.ui_element is self.divide_button:
             name = self.divide_button.text
             self.number+=name
             self.display.set_text(f'{self.number}')
+
         if event.ui_element is self.egal_button:
             name = self.egal_button.text
             self.number+=name
             self.display.set_text(f'{self.number}')
             L=['+','-','*','/' ]
             for i in range(4):
-               if L[i] in self.number:
-                  if i==0:
+               if L[i] in self.number:#si l'opération à faire est dans est dans notre chaine de caractère
+                  
+                  if i==0:#addition
                     for j in range(len(self.number)):
                         if L[i]==self.number[j]:
                            m1=float(self.number[:j])+float(self.number[j+1:len(self.number)-1])
                     self.number+=str(m1)
                     
-                  if i==1:
+                  if i==1:#soustraction
                      for j in range(len(self.number)):
                         if L[i]==self.number[j]:
                            m1=float(self.number[:j])-float(self.number[j+1:len(self.number)-1])
                      self.number+=str(m1)
 
-                  if i==2:
+                  if i==2:#multiplication
                      for j in range(len(self.number)):
                         if L[i]==self.number[j]:
                            m1=float(self.number[:j])*float(self.number[j+1:len(self.number)-1])
                      self.number+=str(m1)
 
-                  if i==3:
+                  if i==3:#division
                      for j in range(len(self.number)):
                         if L[i]==self.number[j]:
                            if self.number[j+1:len(self.number)-1]=='0':
@@ -217,7 +242,7 @@ class App:
                             m1=float(self.number[:j])/float(self.number[j+1:len(self.number)-1])
                             self.number+=str(m1)
 
-            self.display.set_text(f'{self.number}')
+            self.display.set_text(f'{self.number}')#affichage
                                       
 
   def run(self):
