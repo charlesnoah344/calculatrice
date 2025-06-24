@@ -1,0 +1,59 @@
+{
+    "defaults": {
+        "colours": {
+            "normal_bg": "#4472C4",
+            "hovered_bg": "#5B9BD5", 
+            "disabled_bg": "#CCCCCC",
+            "selected_bg": "#2F5597",
+            "dark_bg": "#21282D",
+            "normal_text": "#FFFFFF",
+            "hovered_text": "#FFFFFF",
+            "selected_text": "#FFFFFF",
+            "disabled_text": "#808080"
+        }
+    },
+    "button": {
+        "colours": {
+            "normal_bg": "#4472C4",
+            "hovered_bg": "#5B9BD5",
+            "disabled_bg": "#CCCCCC", 
+            "selected_bg": "#2F5597",
+            "normal_text": "#FFFFFF",
+            "hovered_text": "#FFFFFF",
+            "selected_text": "#FFFFFF",
+            "disabled_text": "#808080",
+            "normal_border": "#21282D",
+            "hovered_border": "#21282D",
+            "disabled_border": "#808080",
+            "selected_border": "#21282D"
+        }
+    },
+    "#yellow_button": {
+        "colours": {
+            "normal_bg": "#FFD700",
+            "hovered_bg": "#FFFF88",
+            "disabled_bg": "#CCCC00",
+            "normal_text": "#000000",
+            "hovered_text": "#000000",
+            "selected_text": "#000000"
+        }
+    },
+    "#number_button": {
+        "colours": {
+            "normal_bg": "#2E8B57",
+            "hovered_bg": "#3CB371",
+            "disabled_bg": "#CCCCCC",
+            "normal_text": "#FFFFFF",
+            "hovered_text": "#FFFFFF"
+        }
+    },
+    "#operator_button": {
+        "colours": {
+            "normal_bg": "#DC143C",
+            "hovered_bg": "#FF6347",
+            "disabled_bg": "#CCCCCC",
+            "normal_text": "#FFFFFF",
+            "hovered_text": "#FFFFFF"
+        }
+    }
+}

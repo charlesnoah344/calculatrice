@@ -21,7 +21,7 @@ def afficher(text,position,taille,police,couleur):
 class App:
   def __init__(self):
     pygame.init()
-    self.size = (780, 400)
+    self.size = (780, 460)
     self.screen = pygame.display.set_mode(self.size)
     self.manager = pygame_gui.UIManager(self.size)
   
@@ -84,7 +84,7 @@ class App:
     self.erase_button = UIButton(
       relative_rect=pygame.Rect(315, 170+170, 150, 50),
       text='<<',
-      manager=self.manager
+      manager=self.manager,
     )
     self.plus_button = UIButton(
       relative_rect=pygame.Rect(470, 5+170, 150, 50),
@@ -126,15 +126,22 @@ class App:
        text=')',
        manager=self.manager
     )
+
+    self.cos_button=UIButton(
+       relative_rect=pygame.Rect(5, 170+225, 150, 50),
+       text='cos',
+       manager=self.manager
+    )
+
     self.pattern=r'\d+\.?\d*|[+\-*/]'
 
 
     self.number=''
     self.display_position=(400,120)
-    self.display_label=afficher(f'{self.number}',self.display_position,40,'arial',(255,255,255))#c'est ce que j'affiche
+    self.display_label=afficher(f'{self.number}',self.display_position,40,'arial',(255,255,255))#couleur blanche
     self.screen.blit(self.display_label[0], self.display_label[1])
 
-    self.welcome_label=afficher('Lesno calculator',(400,50),40,'impact',(255,0,0))#c'est ce que j'affiche
+    self.welcome_label=afficher('Lesno calculator',(400,50),40,'comic sans ms',(255,0,0))#couleur rouge
     self.screen.blit(self.welcome_label[0], self.welcome_label[1])
 
     
@@ -153,82 +160,151 @@ class App:
 
     if event.type == pygame_gui.UI_BUTTON_PRESSED:
         if event.ui_element is self.one_button:
-            name = self.one_button.text
-            self.number+=name
-            self.display_label=afficher(f'{self.number}',self.display_position,40,'arial',(255,255,255))
-            self.screen.blit(self.display_label[0], self.display_label[1])
+            if p.match(self.number) is not None: #si il s'agit d'une séquence d'operation
+              name = self.one_button.text
+              self.number+=name
+              self.display_label=afficher(f'{self.number}',self.display_position,40,'arial',(255,255,255))
+              self.screen.blit(self.display_label[0], self.display_label[1])
+            else:#sinon on supprime tout
+              name = self.one_button.text
+              self.number=name
+              self.display_label=afficher(f'{self.number}',self.display_position,40,'arial',(255,255,255))
+              self.screen.blit(self.display_label[0], self.display_label[1])
 
         if event.ui_element is self.two_button:
-            name = self.two_button.text
-            self.number+=name
-            self.display_label=afficher(f'{self.number}',self.display_position,40,'arial',(255,255,255))
-            self.screen.blit(self.display_label[0], self.display_label[1])
+            if p.match(self.number) is not None: #si il s'agit d'une séquence d'operation
+              name = self.two_button.text
+              self.number+=name
+              self.display_label=afficher(f'{self.number}',self.display_position,40,'arial',(255,255,255))
+              self.screen.blit(self.display_label[0], self.display_label[1])
+            else:#sinon on supprime tout
+              name = self.two_button.text
+              self.number=name
+              self.display_label=afficher(f'{self.number}',self.display_position,40,'arial',(255,255,255))
+              self.screen.blit(self.display_label[0], self.display_label[1])
+
 
         if event.ui_element is self.three_button:
-            name = self.three_button.text
-            self.number+=name
-            self.display_label=afficher(f'{self.number}',self.display_position,40,'arial',(255,255,255))
-            self.screen.blit(self.display_label[0], self.display_label[1])
+            if p.match(self.number) is not None: #si il s'agit d'une séquence d'operation
+              name = self.three_button.text
+              self.number+=name
+              self.display_label=afficher(f'{self.number}',self.display_position,40,'arial',(255,255,255))
+              self.screen.blit(self.display_label[0], self.display_label[1])
+            else:#sinon on supprime tout
+              name = self.three_button.text
+              self.number=name
+              self.display_label=afficher(f'{self.number}',self.display_position,40,'arial',(255,255,255))
+              self.screen.blit(self.display_label[0], self.display_label[1])
+
 
         if event.ui_element is self.four_button:
-            name = self.four_button.text
-            self.number+=name
-            self.display_label=afficher(f'{self.number}',self.display_position,40,'arial',(255,255,255))
-            self.screen.blit(self.display_label[0], self.display_label[1])
+            if p.match(self.number) is not None: #si il s'agit d'une séquence d'operation
+              name = self.four_button.text
+              self.number+=name
+              self.display_label=afficher(f'{self.number}',self.display_position,40,'arial',(255,255,255))
+              self.screen.blit(self.display_label[0], self.display_label[1])
+            else:#sinon on supprime tout
+              name = self.four_button.text
+              self.number=name
+              self.display_label=afficher(f'{self.number}',self.display_position,40,'arial',(255,255,255))
+              self.screen.blit(self.display_label[0], self.display_label[1])
 
         if event.ui_element is self.five_button:
-            name = self.five_button.text
-            self.number+=name
-            self.display_label=afficher(f'{self.number}',self.display_position,40,'arial',(255,255,255))
-            self.screen.blit(self.display_label[0], self.display_label[1])
+            if p.match(self.number) is not None: #si il s'agit d'une séquence d'operation
+              name = self.five_button.text
+              self.number+=name
+              self.display_label=afficher(f'{self.number}',self.display_position,40,'arial',(255,255,255))
+              self.screen.blit(self.display_label[0], self.display_label[1])
+            else:#sinon on supprime tout
+              name = self.five_button.text
+              self.number=name
+              self.display_label=afficher(f'{self.number}',self.display_position,40,'arial',(255,255,255))
+              self.screen.blit(self.display_label[0], self.display_label[1])
 
         if event.ui_element is self.six_button:
-            name = self.six_button.text
-            self.number+=name
-            self.display_label=afficher(f'{self.number}',self.display_position,40,'arial',(255,255,255))
-            self.screen.blit(self.display_label[0], self.display_label[1])
+            if p.match(self.number) is not None: #si il s'agit d'une séquence d'operation
+              name = self.six_button.text
+              self.number+=name
+              self.display_label=afficher(f'{self.number}',self.display_position,40,'arial',(255,255,255))
+              self.screen.blit(self.display_label[0], self.display_label[1])
+            else:#sinon on supprime tout
+              name = self.six_button.text
+              self.number=name
+              self.display_label=afficher(f'{self.number}',self.display_position,40,'arial',(255,255,255))
+              self.screen.blit(self.display_label[0], self.display_label[1])
 
         if event.ui_element is self.seven_button:
-            name = self.seven_button.text
-            self.number+=name
-            self.display_label=afficher(f'{self.number}',self.display_position,40,'arial',(255,255,255))
-            self.screen.blit(self.display_label[0], self.display_label[1])
+            if p.match(self.number) is not None: #si il s'agit d'une séquence d'operation
+              name = self.seven_button.text
+              self.number+=name
+              self.display_label=afficher(f'{self.number}',self.display_position,40,'arial',(255,255,255))
+              self.screen.blit(self.display_label[0], self.display_label[1])
+            else:#sinon on supprime tout
+              name = self.seven_button.text
+              self.number=name
+              self.display_label=afficher(f'{self.number}',self.display_position,40,'arial',(255,255,255))
+              self.screen.blit(self.display_label[0], self.display_label[1])
 
         if event.ui_element is self.eight_button:
-            name = self.eight_button.text
-            self.number+=name
-            self.display_label=afficher(f'{self.number}',self.display_position,40,'arial',(255,255,255))
-            self.screen.blit(self.display_label[0], self.display_label[1])
+            if p.match(self.number) is not None: #si il s'agit d'une séquence d'operation
+              name = self.eight_button.text
+              self.number+=name
+              self.display_label=afficher(f'{self.number}',self.display_position,40,'arial',(255,255,255))
+              self.screen.blit(self.display_label[0], self.display_label[1])
+            else:#sinon on supprime tout
+              name = self.eight_button.text
+              self.number=name
+              self.display_label=afficher(f'{self.number}',self.display_position,40,'arial',(255,255,255))
+              self.screen.blit(self.display_label[0], self.display_label[1])
 
         if event.ui_element is self.nine_button:
-            name = self.nine_button.text
-            self.number+=name
-            self.display_label=afficher(f'{self.number}',self.display_position,40,'arial',(255,255,255))
-            self.screen.blit(self.display_label[0], self.display_label[1])
+            if p.match(self.number) is not None: #si il s'agit d'une séquence d'operation
+              name = self.nine_button.text
+              self.number+=name
+              self.display_label=afficher(f'{self.number}',self.display_position,40,'arial',(255,255,255))
+              self.screen.blit(self.display_label[0], self.display_label[1])
+            else:#sinon on supprime tout
+              name = self.nine_button.text
+              self.number=name
+              self.display_label=afficher(f'{self.number}',self.display_position,40,'arial',(255,255,255))
+              self.screen.blit(self.display_label[0], self.display_label[1])
 
         if event.ui_element is self.zero_button:
-            name = self.zero_button.text
-            self.number+=name
-            self.display_label=afficher(f'{self.number}',self.display_position,40,'arial',(255,255,255))
-            self.screen.blit(self.display_label[0], self.display_label[1])
+            if p.match(self.number) is not None: #si il s'agit d'une séquence d'operation
+              name = self.zero_button.text
+              self.number+=name
+              self.display_label=afficher(f'{self.number}',self.display_position,40,'arial',(255,255,255))
+              self.screen.blit(self.display_label[0], self.display_label[1])
+            else:#sinon on supprime tout
+              name = self.zero_button.text
+              self.number=name
+              self.display_label=afficher(f'{self.number}',self.display_position,40,'arial',(255,255,255))
+              self.screen.blit(self.display_label[0], self.display_label[1])
 
         if event.ui_element is self.point_button:
-            if '.' in self.number:
-               for k in range(len(self.number)):
-                  if self.number[k]=='.':
-                     if self.number[k+1]=='.':
-                        pass
-                     else:
-                        name = self.point_button.text
-                        self.number+=name
-                        self.display_label=afficher(f'{self.number}',self.display_position,40,'arial',(255,255,255))
-                        self.screen.blit(self.display_label[0], self.display_label[1])   
+            if p.match(self.number) is not None: #si il s'agit d'une séquence d'operation
+              if '.' in self.number:
+                for k in range(len(self.number)):
+                    if self.number[k]=='.':
+                      if self.number[k+1]=='.':
+                          pass
+                      else:
+                          name = self.point_button.text
+                          self.number+=name
+                          self.display_label=afficher(f'{self.number}',self.display_position,40,'arial',(255,255,255))
+                          self.screen.blit(self.display_label[0], self.display_label[1])   
 
-            else:
-               name = self.point_button.text
-               self.number+=name
-               self.display_label=afficher(f'{self.number}',self.display_position,40,'arial',(255,255,255))
-               self.screen.blit(self.display_label[0], self.display_label[1])
+              else:
+                name = self.point_button.text
+                self.number+=name
+                self.display_label=afficher(f'{self.number}',self.display_position,40,'arial',(255,255,255))
+                self.screen.blit(self.display_label[0], self.display_label[1])
+            else:#sinon on supprime tout
+              name = self.point_button.text
+              self.number=name
+              self.display_label=afficher(f'{self.number}',self.display_position,40,'arial',(255,255,255))
+              self.screen.blit(self.display_label[0], self.display_label[1])
+               
 
         if event.ui_element is self.erase_button:
            if p.match(self.number) is not None: #si il s'agit d'une séquence d'operation
@@ -331,7 +407,7 @@ class App:
       
       self.manager.update(time_delta/1000)
 
-      pygame.draw.rect(self.screen, (0, 0, 0), pygame.Rect(0, 0, 780, 400))
+      pygame.draw.rect(self.screen, (0, 0, 0), pygame.Rect(0, 0, 780, 460))
      
       self.manager.draw_ui(self.screen)
 
