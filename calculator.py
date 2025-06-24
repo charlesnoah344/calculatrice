@@ -3,6 +3,7 @@ import pygame_gui
 from pygame_gui.elements import UIButton, UITextEntryLine, UILabel
 import sys
 import re
+from numpy import cos, sin, tan, pi, log
 
 def afficher(text,position,taille,police,couleur):
     """cette fonction affiche à l'ecran un texte. 
@@ -144,16 +145,16 @@ class App:
     )
     self.pi_button=UIButton(
        relative_rect=pygame.Rect(470, 170+225, 150, 50),
-       text='π',
+       text='pi',
        manager=self.manager
     )
     self.log_button=UIButton(
        relative_rect=pygame.Rect(625, 170+225, 150, 50),
-       text='ln',
+       text='log',
        manager=self.manager
     )
 
-    self.pattern=r'\d+\.?\d*|[+\-*/]'
+    self.pattern=r'\d+\.?\d*|[+\-*/()]|[a-z]{2,3}'
 
 
     self.number=''
@@ -173,12 +174,77 @@ class App:
        return 'SYNTAX ERROR'
     except ZeroDivisionError:
        return "MATH ERROR"
+    except NameError:
+       return 'SYNTAX ERROR'
+    except RuntimeWarning:
+       return('MATH ERROR')
 
   def process_events(self, event: pygame.event.Event):
     '''cette fonction gère les différents évènements'''
     p=re.compile(self.pattern)#regex
 
     if event.type == pygame_gui.UI_BUTTON_PRESSED:
+        
+        if event.ui_element is self.cos_button:
+            if p.match(self.number) is not None: #si il s'agit d'une séquence d'operation
+              name = self.cos_button.text
+              self.number+=name
+              self.display_label=afficher(f'{self.number}',self.display_position,40,'arial',(255,255,255))
+              self.screen.blit(self.display_label[0], self.display_label[1])
+            else:#sinon on supprime tout
+              name = self.cos_button.text
+              self.number=name
+              self.display_label=afficher(f'{self.number}',self.display_position,40,'arial',(255,255,255))
+              self.screen.blit(self.display_label[0], self.display_label[1])
+
+        if event.ui_element is self.sin_button:
+            if p.match(self.number) is not None: #si il s'agit d'une séquence d'operation
+              name = self.sin_button.text
+              self.number+=name
+              self.display_label=afficher(f'{self.number}',self.display_position,40,'arial',(255,255,255))
+              self.screen.blit(self.display_label[0], self.display_label[1])
+            else:#sinon on supprime tout
+              name = self.sin_button.text
+              self.number=name
+              self.display_label=afficher(f'{self.number}',self.display_position,40,'arial',(255,255,255))
+              self.screen.blit(self.display_label[0], self.display_label[1])
+
+        if event.ui_element is self.tan_button:
+            if p.match(self.number) is not None: #si il s'agit d'une séquence d'operation
+              name = self.tan_button.text
+              self.number+=name
+              self.display_label=afficher(f'{self.number}',self.display_position,40,'arial',(255,255,255))
+              self.screen.blit(self.display_label[0], self.display_label[1])
+            else:#sinon on supprime tout
+              name = self.tan_button.text
+              self.number=name
+              self.display_label=afficher(f'{self.number}',self.display_position,40,'arial',(255,255,255))
+              self.screen.blit(self.display_label[0], self.display_label[1])
+
+        if event.ui_element is self.pi_button:
+            if p.match(self.number) is not None: #si il s'agit d'une séquence d'operation
+              name = self.pi_button.text
+              self.number+=name
+              self.display_label=afficher(f'{self.number}',self.display_position,40,'arial',(255,255,255))
+              self.screen.blit(self.display_label[0], self.display_label[1])
+            else:#sinon on supprime tout
+              name = self.pi_button.text
+              self.number=name
+              self.display_label=afficher(f'{self.number}',self.display_position,40,'arial',(255,255,255))
+              self.screen.blit(self.display_label[0], self.display_label[1])
+
+        if event.ui_element is self.log_button:
+            if p.match(self.number) is not None: #si il s'agit d'une séquence d'operation
+              name = self.log_button.text
+              self.number+=name
+              self.display_label=afficher(f'{self.number}',self.display_position,40,'arial',(255,255,255))
+              self.screen.blit(self.display_label[0], self.display_label[1])
+            else:#sinon on supprime tout
+              name = self.log_button.text
+              self.number=name
+              self.display_label=afficher(f'{self.number}',self.display_position,40,'arial',(255,255,255))
+              self.screen.blit(self.display_label[0], self.display_label[1])
+
         if event.ui_element is self.one_button:
             if p.match(self.number) is not None: #si il s'agit d'une séquence d'operation
               name = self.one_button.text
