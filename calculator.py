@@ -132,6 +132,26 @@ class App:
        text='cos',
        manager=self.manager
     )
+    self.sin_button=UIButton(
+       relative_rect=pygame.Rect(160, 170+225, 150, 50),
+       text='sin',
+       manager=self.manager
+    )
+    self.tan_button=UIButton(
+       relative_rect=pygame.Rect(315, 170+225, 150, 50),
+       text='tan',
+       manager=self.manager
+    )
+    self.pi_button=UIButton(
+       relative_rect=pygame.Rect(470, 170+225, 150, 50),
+       text='π',
+       manager=self.manager
+    )
+    self.log_button=UIButton(
+       relative_rect=pygame.Rect(625, 170+225, 150, 50),
+       text='ln',
+       manager=self.manager
+    )
 
     self.pattern=r'\d+\.?\d*|[+\-*/]'
 
