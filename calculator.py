@@ -4,15 +4,15 @@ from pygame_gui.elements import UIButton, UITextEntryLine, UILabel
 import sys
 import re
 
-def afficher(text,position,taille):
+def afficher(text,position,taille,police,couleur):
     """cette fonction affiche à l'ecran un texte. 
      exemple d'utilisation:
      self.menu_label=afficher('Bienvenue\nby Lesno',(550,100),60)
      self.screen.blit(self.menu_label[0], self.menu_label[1])# Un autre appel dans le run avant le flip
        """
     pygame.init()
-    font=pygame.font.SysFont('arial', taille, bold=True)
-    text_surface=font.render(text,True,(255, 255, 255))#couleur blanche
+    font=pygame.font.SysFont(police, taille, bold=True)
+    text_surface=font.render(text,True,couleur) #couleur blanche
     text_rect=text_surface.get_rect(center=position)#position en x et y
     clock = pygame.time.Clock()
     return (text_surface, text_rect)
@@ -131,10 +131,10 @@ class App:
 
     self.number=''
     self.display_position=(400,120)
-    self.display_label=afficher(f'{self.number}',self.display_position,40)#c'est ce que j'affiche
+    self.display_label=afficher(f'{self.number}',self.display_position,40,'arial',(255,255,255))#c'est ce que j'affiche
     self.screen.blit(self.display_label[0], self.display_label[1])
 
-    self.welcome_label=afficher('Lesno calculator',(400,50),40)#c'est ce que j'affiche
+    self.welcome_label=afficher('Lesno calculator',(400,50),40,'impact',(255,0,0))#c'est ce que j'affiche
     self.screen.blit(self.welcome_label[0], self.welcome_label[1])
 
     
@@ -155,61 +155,61 @@ class App:
         if event.ui_element is self.one_button:
             name = self.one_button.text
             self.number+=name
-            self.display_label=afficher(f'{self.number}',self.display_position,40)
+            self.display_label=afficher(f'{self.number}',self.display_position,40,'arial',(255,255,255))
             self.screen.blit(self.display_label[0], self.display_label[1])
 
         if event.ui_element is self.two_button:
             name = self.two_button.text
             self.number+=name
-            self.display_label=afficher(f'{self.number}',self.display_position,40)
+            self.display_label=afficher(f'{self.number}',self.display_position,40,'arial',(255,255,255))
             self.screen.blit(self.display_label[0], self.display_label[1])
 
         if event.ui_element is self.three_button:
             name = self.three_button.text
             self.number+=name
-            self.display_label=afficher(f'{self.number}',self.display_position,40)
+            self.display_label=afficher(f'{self.number}',self.display_position,40,'arial',(255,255,255))
             self.screen.blit(self.display_label[0], self.display_label[1])
 
         if event.ui_element is self.four_button:
             name = self.four_button.text
             self.number+=name
-            self.display_label=afficher(f'{self.number}',self.display_position,40)
+            self.display_label=afficher(f'{self.number}',self.display_position,40,'arial',(255,255,255))
             self.screen.blit(self.display_label[0], self.display_label[1])
 
         if event.ui_element is self.five_button:
             name = self.five_button.text
             self.number+=name
-            self.display_label=afficher(f'{self.number}',self.display_position,40)
+            self.display_label=afficher(f'{self.number}',self.display_position,40,'arial',(255,255,255))
             self.screen.blit(self.display_label[0], self.display_label[1])
 
         if event.ui_element is self.six_button:
             name = self.six_button.text
             self.number+=name
-            self.display_label=afficher(f'{self.number}',self.display_position,40)
+            self.display_label=afficher(f'{self.number}',self.display_position,40,'arial',(255,255,255))
             self.screen.blit(self.display_label[0], self.display_label[1])
 
         if event.ui_element is self.seven_button:
             name = self.seven_button.text
             self.number+=name
-            self.display_label=afficher(f'{self.number}',self.display_position,40)
+            self.display_label=afficher(f'{self.number}',self.display_position,40,'arial',(255,255,255))
             self.screen.blit(self.display_label[0], self.display_label[1])
 
         if event.ui_element is self.eight_button:
             name = self.eight_button.text
             self.number+=name
-            self.display_label=afficher(f'{self.number}',self.display_position,40)
+            self.display_label=afficher(f'{self.number}',self.display_position,40,'arial',(255,255,255))
             self.screen.blit(self.display_label[0], self.display_label[1])
 
         if event.ui_element is self.nine_button:
             name = self.nine_button.text
             self.number+=name
-            self.display_label=afficher(f'{self.number}',self.display_position,40)
+            self.display_label=afficher(f'{self.number}',self.display_position,40,'arial',(255,255,255))
             self.screen.blit(self.display_label[0], self.display_label[1])
 
         if event.ui_element is self.zero_button:
             name = self.zero_button.text
             self.number+=name
-            self.display_label=afficher(f'{self.number}',self.display_position,40)
+            self.display_label=afficher(f'{self.number}',self.display_position,40,'arial',(255,255,255))
             self.screen.blit(self.display_label[0], self.display_label[1])
 
         if event.ui_element is self.point_button:
@@ -221,28 +221,28 @@ class App:
                      else:
                         name = self.point_button.text
                         self.number+=name
-                        self.display_label=afficher(f'{self.number}',self.display_position,40)
+                        self.display_label=afficher(f'{self.number}',self.display_position,40,'arial',(255,255,255))
                         self.screen.blit(self.display_label[0], self.display_label[1])   
 
             else:
                name = self.point_button.text
                self.number+=name
-               self.display_label=afficher(f'{self.number}',self.display_position,40)
+               self.display_label=afficher(f'{self.number}',self.display_position,40,'arial',(255,255,255))
                self.screen.blit(self.display_label[0], self.display_label[1])
 
         if event.ui_element is self.erase_button:
            if p.match(self.number) is not None: #si il s'agit d'une séquence d'operation
               self.number=self.number[:-1]#on retire le dernier caractère
-              self.display_label=afficher(f'{self.number}',self.display_position,40)
+              self.display_label=afficher(f'{self.number}',self.display_position,40,'arial',(255,255,255))
               self.screen.blit(self.display_label[0], self.display_label[1])
            else: #sinon on supprime tout
               self.number=''
-              self.display_label=afficher(f'{self.number}',self.display_position,40)
+              self.display_label=afficher(f'{self.number}',self.display_position,40,'arial',(255,255,255))
               self.screen.blit(self.display_label[0], self.display_label[1])
           
         if event.ui_element is self.erase_all_button:
            self.number=''
-           self.display_label=afficher(f'{self.number}',self.display_position,40)
+           self.display_label=afficher(f'{self.number}',self.display_position,40,'arial',(255,255,255))
            self.screen.blit(self.display_label[0], self.display_label[1])
         
            
@@ -250,24 +250,24 @@ class App:
             if p.match(self.number) is not None: #si il s'agit d'une séquence d'operation
               name = self.plus_button.text
               self.number+=name
-              self.display_label=afficher(f'{self.number}',self.display_position,40)
+              self.display_label=afficher(f'{self.number}',self.display_position,40,'arial',(255,255,255))
               self.screen.blit(self.display_label[0], self.display_label[1])
             else:#sinon on supprime tout
               name = self.plus_button.text
               self.number=name
-              self.display_label=afficher(f'{self.number}',self.display_position,40)
+              self.display_label=afficher(f'{self.number}',self.display_position,40,'arial',(255,255,255))
               self.screen.blit(self.display_label[0], self.display_label[1])
 
         if event.ui_element is self.minus_button:
             if p.match(self.number) is not None: #si il s'agit d'une séquence d'operation
               name = self.minus_button.text
               self.number+=name
-              self.display_label=afficher(f'{self.number}',self.display_position,40)
+              self.display_label=afficher(f'{self.number}',self.display_position,40,'arial',(255,255,255))
               self.screen.blit(self.display_label[0], self.display_label[1])
             else:#sinon on supprime tout
               name = self.minus_button.text
               self.number=name
-              self.display_label=afficher(f'{self.number}',self.display_position,40)
+              self.display_label=afficher(f'{self.number}',self.display_position,40,'arial',(255,255,255))
               self.screen.blit(self.display_label[0], self.display_label[1])
 
 
@@ -275,12 +275,12 @@ class App:
             if p.match(self.number) is not None: #si il s'agit d'une séquence d'operation
               name = self.multi_button.text
               self.number+=name
-              self.display_label=afficher(f'{self.number}',self.display_position,40)
+              self.display_label=afficher(f'{self.number}',self.display_position,40,'arial',(255,255,255))
               self.screen.blit(self.display_label[0], self.display_label[1])
             else:#sinon on supprime tout
               name = self.multi_button.text
               self.number=name
-              self.display_label=afficher(f'{self.number}',self.display_position,40)
+              self.display_label=afficher(f'{self.number}',self.display_position,40,'arial',(255,255,255))
               self.screen.blit(self.display_label[0], self.display_label[1])
 
 
@@ -288,30 +288,30 @@ class App:
             if p.match(self.number) is not None: #si il s'agit d'une séquence d'operation
               name = self.divide_button.text
               self.number+=name
-              self.display_label=afficher(f'{self.number}',self.display_position,40)
+              self.display_label=afficher(f'{self.number}',self.display_position,40,'arial',(255,255,255))
               self.screen.blit(self.display_label[0], self.display_label[1])
             else:#sinon on supprime tout
               name = self.divide_button.text
               self.number=name
-              self.display_label=afficher(f'{self.number}',self.display_position,40)
+              self.display_label=afficher(f'{self.number}',self.display_position,40,'arial',(255,255,255))
               self.screen.blit(self.display_label[0], self.display_label[1])
 
         if event.ui_element is self.egal_button:
             
             self.number=self.calcul()
-            self.display_label=afficher(f'{self.number}',self.display_position,40)
+            self.display_label=afficher(f'{self.number}',self.display_position,40,'arial',(255,255,255))
             self.screen.blit(self.display_label[0], self.display_label[1])#affichage
         
         if event.ui_element is self.open_parenthesis_button:
             name = self.open_parenthesis_button.text
             self.number+=name
-            self.display_label=afficher(f'{self.number}',self.display_position,40)
+            self.display_label=afficher(f'{self.number}',self.display_position,40,'arial',(255,255,255))
             self.screen.blit(self.display_label[0], self.display_label[1])
 
         if event.ui_element is self.close_parenthesis_button:
             name = self.close_parenthesis_button.text
             self.number+=name
-            self.display_label=afficher(f'{self.number}',self.display_position,40)
+            self.display_label=afficher(f'{self.number}',self.display_position,40,'arial',(255,255,255))
             self.screen.blit(self.display_label[0], self.display_label[1])
                                     
 
